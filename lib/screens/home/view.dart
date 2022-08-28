@@ -36,176 +36,182 @@ class _HomeState extends State<Home> {
         leading:
         Icon(Icons.notifications ,color: Colors.black,),
       ),
-      body: Column(
-
+      body:ListView(
+        scrollDirection: Axis.vertical,
         children: [
-          Container(
-            height: 300,
-            color: Colors.white,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 10,right: 10),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
+
+            children: [
+              Container(
+                height: 300,
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 10,right: 10),
+                  child: Column(
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Icon(Icons.arrow_back_outlined,size: 15,),
-                          Text("3.8k",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black),),
+                          Row(
+                            children: [
+                              Icon(Icons.arrow_back_outlined,size: 15,),
+                              Text("3.8k",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black),),
+                            ],
+                          ),
+
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Icons.warning_amber, color: Color(0xff00aa90),size: 20,),
+                              Text("الفئة الخضراء",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color(0xff00aa90)),),
+                            ],
+                          ),
                         ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SizedBox(width: 5,),
+                          Container(
+                            height: 3, width: 30,
+                            color: Color(0xffe8e8e8),
+                          ),
+                          SizedBox(width: 5,),
+                          Container(
+                            height: 3, width: 30,
+                            color: Color(0xffe8e8e8),
+                          ),
+                          SizedBox(width: 5,),
+                          Container(
+                            height: 3, width: 30,
+                            color: Color(0xffe8e8e8),
+                          ),
+                          SizedBox(width: 5,),
+                          Container(
+                            height: 3, width: 30,
+                            color: Color(0xffe8e8e8),
+                          ),
+                          SizedBox(width: 10,),
+                          Container(
+                            height: 3, width: 30,
+                            color: Color(0xffe8e8e8),
+                          ),SizedBox(width: 5,),
+                          Container(
+                            height: 3, width: 30,
+                            color: Color(0xffe8e8e8),
+                          ),
+                          SizedBox(width: 5,),
+                          Container(
+                            height: 2, width: 30,
+                            color: Color(0xff00aa90),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text("تبقى 9 طلبات اضافيه لغاية اغسطس 31",style:TextStyle(fontSize: 13,fontWeight: FontWeight.bold,color: Color(0xffb6b6b8))),
+                        ],
+                      ),
+                      Container(
+                        height: 250,
+                        child: ListView(
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            GestureDetector(
+                                child:rrow("كاهي فيروز", "\$ٌ\$وفطور","4.9","اكسب نقاط","images/kkk.jpg"),
+                                onTap: (){
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => Scn(restname: restname2, img: img2, rang: rang2, decrption: decrption2, cash: cash2, epoin: epoin2, point: point2, user: user2, comend: comend2)));
+                                }
+                            ),
+                            GestureDetector(
+                              child:rrow("Cookers", "\$ٌ\$وفطور","4.9","اكسب نقاط","images/kntak.jpg") ,
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Scn(restname: restname3, img: img3, rang: rang3, decrption: decrption3, cash: cash3, epoin: epoin3, point: point3, user: user3, comend: comend3)));
+                              },
+                            ),
+                            GestureDetector(
+                              child: rrow("كاهي فيروز", "\$ٌ\$وفطور","4.9","اكسب نقاط","images/brkar.jpg"),
+                              onTap: (){
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Scn(restname: restname, img: img, rang: rang, decrption: decrption, cash: cash, epoin: epoin, point: point, user: user, comend: comend)));
+                              },
+                            ),
+
+
+                          ],
+                        ),
                       ),
 
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(Icons.warning_amber, color: Color(0xff00aa90),size: 20,),
-                          Text("الفئة الخضراء",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Color(0xff00aa90)),),
-                        ],
-                      ),
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SizedBox(width: 5,),
-                      Container(
-                        height: 3, width: 30,
-                        color: Color(0xffe8e8e8),
-                      ),
-                      SizedBox(width: 5,),
-                      Container(
-                        height: 3, width: 30,
-                        color: Color(0xffe8e8e8),
-                      ),
-                      SizedBox(width: 5,),
-                      Container(
-                        height: 3, width: 30,
-                        color: Color(0xffe8e8e8),
-                      ),
-                      SizedBox(width: 5,),
-                      Container(
-                        height: 3, width: 30,
-                        color: Color(0xffe8e8e8),
-                      ),
-                      SizedBox(width: 10,),
-                      Container(
-                        height: 3, width: 30,
-                        color: Color(0xffe8e8e8),
-                      ),SizedBox(width: 5,),
-                      Container(
-                        height: 3, width: 30,
-                        color: Color(0xffe8e8e8),
-                      ),
-                      SizedBox(width: 5,),
-                      Container(
-                        height: 2, width: 30,
-                        color: Color(0xff00aa90),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text("تبقى 9 طلبات اضافيه لغاية اغسطس 31",style:TextStyle(fontSize: 13,fontWeight: FontWeight.bold,color: Color(0xffb6b6b8))),
-                    ],
-                  ),
-                  Container(
-                    height: 250,
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.width-240,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        navrow("images/tasq.jpg","البقالة"),
+                        navrow("images/frsh.png","توترز فريش"),
                         GestureDetector(
-                          child:rrow("كاهي فيروز", "\$ٌ\$وفطور","4.9","اكسب نقاط","images/kkk.jpg"),
+                          child: navrow("images/brkar.jpg","مطاعم") ,
                           onTap: (){
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Scn(restname: restname2, img: img2, rang: rang2, decrption: decrption2, cash: cash2, epoin: epoin2, point: point2, user: user2, comend: comend2)));
-                          }
-                        ),
-                        GestureDetector(
-                          child:rrow("Cookers", "\$ٌ\$وفطور","4.9","اكسب نقاط","images/kntak.jpg") ,
-                          onTap: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Scn(restname: restname3, img: img3, rang: rang3, decrption: decrption3, cash: cash3, epoin: epoin3, point: point3, user: user3, comend: comend3)));
+                                builder: (context) => Scn(restname: restname, img: img, rang: rang, decrption: decrption, cash: cash, epoin: epoin, point: point, user: user, comend: comend)));
                           },
                         ),
-                        GestureDetector(
-                          child: rrow("كاهي فيروز", "\$ٌ\$وفطور","4.9","اكسب نقاط","images/brkar.jpg"),
-                           onTap: (){
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Scn(restname: restname, img: img, rang: rang, decrption: decrption, cash: cash, epoin: epoin, point: point, user: user, comend: comend)));
-                           },
-                        ),
-
 
                       ],
                     ),
-                  ),
+                    SizedBox(height: 10,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        navrow("images/raseed.png","اضف رصيد"),
+                        GestureDetector(
+                          child:navrow("images/mndop.jpg","المندوب"),
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Scn(restname: restnamem, img: imgm, rang: rangm, decrption: decrptionm, cash: cashm, epoin: epoinm, point: pointm, user: userm, comend: comendm)));
+                          },
+                        ),
 
-                ],
+                        navrow("images/tasq.jpg","متاجر"),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.width-240,
-            width: MediaQuery.of(context).size.width,
-            color: Colors.white,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    navrow("images/tasq.jpg","البقالة"),
-                    navrow("images/frsh.png","توترز فريش"),
-                    GestureDetector(
-                      child: navrow("images/brkar.jpg","مطاعم") ,
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Scn(restname: restname, img: img, rang: rang, decrption: decrption, cash: cash, epoin: epoin, point: point, user: user, comend: comend)));
-                      },
-                    ),
+              Container(height: 10,width: MediaQuery.of(context).size.width,color:Color(0xffe7e7e7)),
 
+              Container(
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.arrow_back_ios_new, color: Color(0xff00aa90),size: 20,),
+                        Text("خصومات اسبوعية",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),),
+                      ],
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("احصل على خصم 50% على مطاعم هذا الاسبوع",style: TextStyle(fontSize: 15,color: Color(0xff97969b)),),
+                      ],
+                    ),
                   ],
                 ),
-                SizedBox(height: 10,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    navrow("images/raseed.png","اضف رصيد"),
-                    GestureDetector(
-                      child:navrow("images/mndop.jpg","المندوب"),
-                      onTap: (){
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>Scn(restname: restnamem, img: imgm, rang: rangm, decrption: decrptionm, cash: cashm, epoin: epoinm, point: pointm, user: userm, comend: comendm)));
-                      },
-                    ),
-
-                    navrow("images/tasq.jpg","متاجر"),
-                  ],
-                ),
-              ],
-            ),
+              )
+            ],
           ),
-          Container(height: 10,width: MediaQuery.of(context).size.width,color:Color(0xffe7e7e7)),
-
-          Container(
-               color: Colors.white,
-               child: Column(
-                 children: [
-                   Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                     children: [
-                       Icon(Icons.arrow_back_ios_new, color: Color(0xff00aa90),size: 20,),
-                       Text("خصومات اسبوعية",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.black),),
-                     ],
-                   ),
-                   Row(mainAxisAlignment: MainAxisAlignment.end,
-                     children: [
-                       Text("احصل على خصم 50% على مطاعم هذا الاسبوع",style: TextStyle(fontSize: 15,color: Color(0xff97969b)),),
-                     ],
-                   ),
-                 ],
-               ),
-             )
         ],
-      ),
+      ) ,
+
         bottomNavigationBar: CircleBottomNavigationBar(
           initialSelection: currentPage,
           circleColor: Colors.purple,
