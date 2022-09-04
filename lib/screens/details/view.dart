@@ -173,8 +173,13 @@ child: Column(
         ),
 
    child:Padding(
-     padding: const EdgeInsets.only(left: 160,top: 5,bottom: 5),
-     child: Text("ااذا كانت لديك اي ملاحضات حول اطلب يرجى الكتابة",style: TextStyle(fontSize: 15,color: Colors.grey),),
+     padding: const EdgeInsets.only(left: 10,top: 5,bottom: 5),
+     child: Row(
+       mainAxisAlignment: MainAxisAlignment.end,
+       children: [
+         Text("ااذا كانت لديك اي ملاحضات حول اطلب يرجى الكتابة",style: TextStyle(fontSize: 15,color: Colors.grey),),
+       ],
+     ),
    ),
       ),
     ),
@@ -208,8 +213,23 @@ Container(
   ),
           child: Center(child: Text("$count",style: TextStyle(fontSize: 17,color: Colors.black),)),
 ),
+          GestureDetector(
+            onTap: () {
+                count++;
+              sum = 6500*count;
+            },
 
+            child: Container(
+              width: 40 , height: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.grey.withOpacity(0.3),
+              ),
+              child: Center(child: Icon(Icons.add,)),
+            ),
+          ),
 
+  /*
             Container(
               width: 40 , height: 40,
               decoration: BoxDecoration(
@@ -219,6 +239,8 @@ Container(
               child: IconButton(onPressed: ()=>increment(), icon: Icon(Icons.add))
 
             ),
+
+   */
         ],
       ),
     ),
@@ -259,6 +281,7 @@ Padding(
 
         ],
       ),
+
     );
   }
 }

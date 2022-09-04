@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:totrs/screens/dataa.dart';
+import 'package:circle_bottom_navigation_bar/circle_bottom_navigation_bar.dart';
+import 'package:circle_bottom_navigation_bar/widgets/tab_data.dart';
+import 'package:totrs/screens/home/view.dart';
 class Scn extends StatefulWidget {
    //Scn({Key? key}) : super(key: key);
    final String restname ;
@@ -28,6 +31,8 @@ class Scn extends StatefulWidget {
   State<Scn> createState() => _ScnState();
 }
 class _ScnState extends State<Scn> {
+  get currentPage => null;
+
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +49,40 @@ class _ScnState extends State<Scn> {
       ],
             ),
 
+        bottomNavigationBar: CircleBottomNavigationBar(
+          initialSelection: currentPage,
+          circleColor: Colors.purple,
+          activeIconColor: Colors.white,
+          inactiveIconColor: Colors.black87,
+          tabs: [
+            TabData(
+              icon: Icons.home_outlined,
+              iconSize: 25,
+              onClick: (){
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Home()));
+
+              },
+              // Optional
+            ),
+
+            TabData(icon: Icons.search,
+              onClick: (){
+
+              },
+            ),
+            TabData(icon: Icons.delivery_dining),
+            TabData(icon: Icons.favorite_border_outlined),
+            TabData(
+              icon: Icons.person,
+              onClick: (){
+              },
+
+            ),
+          ],
+          onTabChangedListener: (int position) {  },
+
+        )
 
     );
   }
@@ -54,7 +93,7 @@ class _ScnState extends State<Scn> {
       children: [
         Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.width-250,
+          height: 250,
           decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(img),
@@ -81,6 +120,7 @@ class _ScnState extends State<Scn> {
           ),  )
 
       ],
+
     );
  }
 Container page(String  restname,String decrption ,String cash,String epoin, String poin,String user,String comend ){

@@ -27,9 +27,12 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  google_nav_bar: ^5.0.6
   carousel_images: ^1.1.2
   flutter:
     sdk: flutter
+
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -69,6 +72,7 @@ flutter:
   - images/tasq.jpg
   - images/frsh.png
   - images/kntak.jpg
+  - images/deliver.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -45,6 +45,7 @@ class _HomeState extends State<Home> {
               Container(
                 height: 300,
                 color: Colors.white,
+                width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 10,right: 10),
                   child: Column(
@@ -115,6 +116,7 @@ class _HomeState extends State<Home> {
                       ),
                       Container(
                         height: 250,
+                        width: MediaQuery.of(context).size.width,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
@@ -148,7 +150,7 @@ class _HomeState extends State<Home> {
                 ),
               ),
               Container(
-                height: MediaQuery.of(context).size.width-240,
+                height: 300,
                 width: MediaQuery.of(context).size.width,
                 color: Colors.white,
                 child: Column(
@@ -186,7 +188,7 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
-              Container(height: 10,width: MediaQuery.of(context).size.width,color:Color(0xffe7e7e7)),
+              Container(height: 10,width: MediaQuery.of(context).size.width,color:Colors.grey.withOpacity(0.1),),
 
               Container(
                 color: Colors.white,
@@ -211,7 +213,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ) ,
-
+/*
         bottomNavigationBar: CircleBottomNavigationBar(
           initialSelection: currentPage,
           circleColor: Colors.purple,
@@ -234,7 +236,7 @@ class _HomeState extends State<Home> {
                
               },
             ),
-            TabData(icon: Icons.video_collection_outlined),
+            TabData(icon: Icons.delivery_dining),
             TabData(icon: Icons.favorite_border_outlined),
             TabData(
               icon: Icons.person,
@@ -246,7 +248,7 @@ class _HomeState extends State<Home> {
           onTabChangedListener: (int position) {  },
 
         )
-
+*/
 
 
     );
@@ -265,7 +267,8 @@ class _HomeState extends State<Home> {
         Column(
           children: [
             Container(
-              width: 400, height:100,
+              width: MediaQuery.of(context).size.width,
+              height:100,
               decoration: BoxDecoration(
                   boxShadow: [BoxShadow(blurRadius: 3, spreadRadius: 4, offset: Offset(2,4))],
                   borderRadius: BorderRadius.circular(10),
@@ -277,7 +280,8 @@ class _HomeState extends State<Home> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      height:60, width:60,
+                      height:60,
+                      width: 60,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           border: Border.all(color: Colors.deepPurple,width: 2),
