@@ -7,6 +7,12 @@ String img="images/brkar.jpg";
  String decrption="we offer the most delicious burgers with our special and unique American sauces";
  String user="Adan";
  String comend ="''الطعم رهيب حبيته كلش والتوصيل كلش سريع ان شاءالله مو اخر مره كلش''";
+String meal1="Adan";
+String meal2="Adan";
+String price="15000";
+ String evaluation="good";
+ String location="mansor";
+
 
 String restname2 = "Iraqi Kahi";
 String rang2="36-46\n""mins";

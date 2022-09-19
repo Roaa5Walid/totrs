@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 class MyDemo extends StatelessWidget {
   final List<Tab> myTabs = <Tab>[
     Tab(text: 'Past Orders',),
-    Tab(text: 'Upcoming'),
+    Tab(text: 'Upcoming' ,),
   ];
   @override
   Widget build(BuildContext context) {

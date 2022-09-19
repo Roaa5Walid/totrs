@@ -31,6 +31,9 @@ dependencies:
   carousel_images: ^1.1.2
   flutter:
     sdk: flutter
+  http: ^0.13.5
+  intl: ^0.17.0
+  card_swiper: ^2.0.4
 
 
 
@@ -73,6 +76,19 @@ flutter:
   - images/frsh.png
   - images/kntak.jpg
   - images/deliver.jpg
+  - images/r2b.jpg
+  - images/lahm.jpg
+  - images/dem.jpg
+  - images/shagf.jpg
+  - images/inshcof.jpg
+  - images/gelato.jpg
+  - images/mora.jpg
+  - images/mandi.jpg
+  - images/toters.jpg
+  - images/to1.jpg
+  - images/to2.jpg
+  - images/to3.jpg
+  - images/to4.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

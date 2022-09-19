@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_images/carousel_images.dart';
+import 'package:card_swiper/card_swiper.dart';
 class Tt extends StatefulWidget {
   const Tt({Key? key}) : super(key: key);
 
@@ -16,6 +17,7 @@ class _TtState extends State<Tt> {
     'assets/4.jpg',
     'assets/5.jpg',
   ];
+  var imitems = ["images/kkk.jpg","images/kntak.jpg","images/brkar.jpg","images/gelato.jpg","images/inshcof.jpg","images/lahm.jpg","images/dem.jpg","images/shagf.jpg","images/mora.jpg","images/mandi.jpg"];
 
   @override
 
@@ -35,7 +37,22 @@ class _TtState extends State<Tt> {
             onTap: (index) {
 
             },
-          )
+          ),
+          Expanded(
+              child: Swiper(
+                itemBuilder: (context, index) {
+                  return Image.asset(
+                    imitems[index],
+                    fit: BoxFit.fill,
+                  );
+                },
+                autoplay: true,
+                itemCount: imitems.length,
+                pagination:
+                const SwiperPagination(builder: SwiperPagination.fraction),
+                control: const SwiperControl(),
+              )),
+
         ],
       ),
     );
