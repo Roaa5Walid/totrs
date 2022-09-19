@@ -5,7 +5,7 @@ import 'package:totrs/screens/details/view.dart';
 import 'package:totrs/screens/home/view.dart';
 import 'package:totrs/screens/myDemo/view.dart';
 import 'package:totrs/screens/profile/view.dart';
-import 'package:totrs/search/view.dart';
+import 'package:totrs/screens/search/view.dart';
 
 
 class MainNav extends StatefulWidget {

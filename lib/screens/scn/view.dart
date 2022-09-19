@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:totrs/screens/dataa.dart';
 import 'package:circle_bottom_navigation_bar/circle_bottom_navigation_bar.dart';
 import 'package:circle_bottom_navigation_bar/widgets/tab_data.dart';
 import 'package:totrs/screens/home/view.dart';
+
+import '../../dataa.dart';
+import '../../dataa.dart';
 class Scn extends StatefulWidget {
    //Scn({Key? key}) : super(key: key);
    final String restname ;
@@ -14,6 +20,10 @@ class Scn extends StatefulWidget {
    final String decrption;
    final String user;
    final String comend ;
+   final String meal1 ;
+   final String meal2 ;
+
+
 
    Scn({
      required this.restname,
@@ -25,6 +35,10 @@ class Scn extends StatefulWidget {
      required this.point,
      required this.user,
      required this.comend,
+     required this.meal1,
+     required this.meal2,
+
+
 
    });
   @override
@@ -32,57 +46,101 @@ class Scn extends StatefulWidget {
 }
 class _ScnState extends State<Scn> {
   get currentPage => null;
+  var litems = ["1","2","Third"];
+  var noteitems = ["1","2","Third"];
+  var imitems = ["images/kkk.jpg","images/kntak.jpg","images/brkar.jpg","images/gelato.jpg","images/inshcof.jpg","images/lahm.jpg","images/dem.jpg","images/shagf.jpg","images/mora.jpg","images/mandi.jpg"];
+  var rangitems = [];
+  var pointitems = [];
+  var cashitems = [];
+  var namecommitems = [];
+  var commentitems = [];
+  var meal1items=[];
+  var meal2items=[];
+  Future getData() async{
+    var url=Uri.parse("http://localhost:4000");
+    Response response= await get(url);
+
+    String body =response.body;
+
+    List<dynamic> list1=json.decode(body);
+
+    print(list1);
+    litems.clear();  //to not print the items in litems just print value in mySql colum(name ,phone,..)
+    noteitems.clear();
+    //rangitems.clear();
+    // pointitems.clear();
+    // cashitems.clear();
+    // rangitems.clear();
+
+    for (int i=0; i<list1.length; i++){
+      litems.add(list1[i]["r_name"]);
+      noteitems.add(list1[i]["note"]);
+      rangitems.add(list1[i]["rang"]);
+      pointitems.add(list1[i]["point"]);
+      cashitems.add(list1[i]["cash"]);
+      namecommitems.add(list1[i]["namecom"]);
+      commentitems.add(list1[i]["comment"]);
+      meal1items.add(list1[i]["meal1"]);
+      meal2items.add(list1[i]["meal2"]);
+
+
+
+      setState(() {
+
+      });
+    }
+    //print(imitems);//to print in my app
+    print(list1);//to print my databace in run
+
+  }
+  void initState(){
+    super.initState();
+    getData();
+  }
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-       crossAxisAlignment: CrossAxisAlignment.start,
+      body:ListView(
+        shrinkWrap: true,
+        children: [
+        Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           imgpage(widget.img,widget.rang),
           page(widget.restname,widget.decrption,
               widget.cash,widget.epoin,widget.point,widget.user,
-              widget.comend
+              widget.comend,widget.img,widget.meal1,widget.meal2,
           ),
-      ],
-            ),
 
-        bottomNavigationBar: CircleBottomNavigationBar(
-          initialSelection: currentPage,
-          circleColor: Colors.purple,
-          activeIconColor: Colors.white,
-          inactiveIconColor: Colors.black87,
-          tabs: [
-            TabData(
-              icon: Icons.home_outlined,
-              iconSize: 25,
-              onClick: (){
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Home()));
+      ]
+           ),
+          /*
+          ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemCount:litems.length,
+              itemBuilder: (BuildContext context, int index){
+                return
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-              },
-              // Optional
-            ),
+                     // Box("images/deliver.jpg", meal1items[index]),
+                      //Box("images/mndop.jpg", meal2items[index])
 
-            TabData(icon: Icons.search,
-              onClick: (){
+                    ],
+                  );
+              }
 
-              },
-            ),
-            TabData(icon: Icons.delivery_dining),
-            TabData(icon: Icons.favorite_border_outlined),
-            TabData(
-              icon: Icons.person,
-              onClick: (){
-              },
 
-            ),
-          ],
-          onTabChangedListener: (int position) {  },
+          )
 
-        )
+           */
+        ],
+      ),
 
     );
   }
@@ -117,13 +175,12 @@ class _ScnState extends State<Scn> {
             child: Center(
               child: Text(rang,style: TextStyle(fontSize: 17,color: Colors.black),),
             ),
-          ),  )
-
+          ),  ),
       ],
 
     );
  }
-Container page(String  restname,String decrption ,String cash,String epoin, String poin,String user,String comend ){
+Container page(String  restname,String decrption ,String cash,String epoin, String poin,String user,String comend ,String img,String addres,String addres2){
     return  Container(
       child: Column(
         children: [
@@ -133,7 +190,7 @@ Container page(String  restname,String decrption ,String cash,String epoin, Stri
             child: Text(widget.restname,style: TextStyle(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold),),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(top: 0,bottom: 8),
             child: Text(decrption,style: TextStyle(fontSize: 17,color: Colors.black,),),
           ),
           Padding(
@@ -230,8 +287,196 @@ Container page(String  restname,String decrption ,String cash,String epoin, Stri
             height: 2,
             color: Colors.grey.shade300,
           ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("الاطباق الشائعة",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsetsDirectional.all(15),
+            width: MediaQuery.of(context).size.width,
+            height: 120,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white24,
+                boxShadow:[ BoxShadow(
+                    blurRadius: 4, spreadRadius:4,color: Colors.black.withOpacity(0.1)
+
+                )
+                ]
+            ),
+            child:
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8,bottom: 8),
+                        child: Text(addres,style: TextStyle(fontSize: 20,color: Color(0xff00b692)),),
+                      ),
+                      Text("Get up to 50% off on these",style: TextStyle(fontSize: 15,color: Colors.blueGrey),),
+                      Text("selected restaurant",style: TextStyle(fontSize: 15,color: Colors.blueGrey),),
+
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                CircleAvatar(
+                  backgroundImage: AssetImage(img),
+                  radius: 50,
+                ),
+                /*
+          Container(
+            height:100,
+            width: 100,
+            decoration: BoxDecoration(
+                color: Colors.grey,
+                image: DecorationImage(
+                  image: AssetImage(img),
+                  fit: BoxFit.cover,
+                )
+            ),
+          ),
+
+           */
+                Spacer(),
+                Icon(Icons.arrow_forward_ios,color:Color(0xff00b692),)
+              ],
+            ),
+
+          ),
+          Container(
+            margin: EdgeInsetsDirectional.all(15),
+            width: MediaQuery.of(context).size.width,
+            height: 120,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white24,
+                boxShadow:[ BoxShadow(
+                    blurRadius: 4, spreadRadius:4,color: Colors.black.withOpacity(0.1)
+
+                )
+                ]
+            ),
+            child:
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8,bottom: 8),
+                        child: Text(addres2,style: TextStyle(fontSize: 20,color: Color(0xff00b692)),),
+                      ),
+                      Text("Get up to 50% off on these",style: TextStyle(fontSize: 15,color: Colors.blueGrey),),
+                      Text("selected restaurant",style: TextStyle(fontSize: 15,color: Colors.blueGrey),),
+
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                CircleAvatar(
+                  backgroundImage: AssetImage(img),
+                  radius: 50,
+                ),
+                /*
+          Container(
+            height:100,
+            width: 100,
+            decoration: BoxDecoration(
+                color: Colors.grey,
+                image: DecorationImage(
+                  image: AssetImage(img),
+                  fit: BoxFit.cover,
+                )
+            ),
+          ),
+
+           */
+                Spacer(),
+                Icon(Icons.arrow_forward_ios,color:Color(0xff00b692),)
+              ],
+            ),
+
+          )
         ],
       ),
     );
 }
+
+  Container Box(String img,String addres, String addres2 ){
+    return
+      Container(
+      margin: EdgeInsetsDirectional.all(15),
+      width: MediaQuery.of(context).size.width,
+      height: 120,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white24,
+          boxShadow:[ BoxShadow(
+              blurRadius: 4, spreadRadius:4,color: Colors.black.withOpacity(0.1)
+
+          )
+          ]
+      ),
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8,bottom: 8),
+                  child: Text(addres2,style: TextStyle(fontSize: 20,color: Color(0xff00b692)),),
+                ),
+                Text("Get up to 50% off on these",style: TextStyle(fontSize: 15,color: Colors.blueGrey),),
+                Text("selected restaurant",style: TextStyle(fontSize: 15,color: Colors.blueGrey),),
+
+              ],
+            ),
+          ),
+          const SizedBox(
+            width: 50,
+          ),
+          CircleAvatar(
+            backgroundImage: AssetImage(img),
+            radius: 50,
+          ),
+          /*
+          Container(
+            height:100,
+            width: 100,
+            decoration: BoxDecoration(
+                color: Colors.grey,
+                image: DecorationImage(
+                  image: AssetImage(img),
+                  fit: BoxFit.cover,
+                )
+            ),
+          ),
+
+           */
+          Spacer(),
+          Icon(Icons.arrow_forward_ios,color:Color(0xff00b692),)
+        ],
+      ),
+    );
+  }
 }
