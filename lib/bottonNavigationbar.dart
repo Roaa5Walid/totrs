@@ -7,7 +7,7 @@ import 'package:totrs/screens/myDemo/view.dart';
 import 'package:totrs/screens/profile/view.dart';
 import 'package:totrs/screens/search/view.dart';
 
-
+//////mor
 class MainNav extends StatefulWidget {
   @override
   _MainNavState createState() => _MainNavState();

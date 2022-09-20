@@ -17,13 +17,13 @@ import 'bottonNavigationbar.dart';
 void main() {
   runApp(MyApp());
 }
-
+///////mor
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Signin(),
+      home: Spla(),
     );
   }
 }
